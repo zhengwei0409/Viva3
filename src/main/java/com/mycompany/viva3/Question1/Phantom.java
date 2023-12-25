@@ -93,9 +93,12 @@ public class Phantom {
         
         int originalHP = blackMage.getHP();
         
-        while(blackMage.getHP() != 0){
+        while(blackMage.getHP() > 0){
             int hit = damage(blackMage);
             int newHP = blackMage.getHP() - hit;
+            if(newHP < 0) {
+                newHP = 0;
+            }
             blackMage.setHP(newHP);
             System.out.println("[NORM] Phanton has dealt " + hit + " damage to the Black Mage (" + newHP + "/" + originalHP + ")");
         }
